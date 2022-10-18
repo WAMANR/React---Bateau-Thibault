@@ -8,7 +8,7 @@ export default function Header() {
     const goToNextScreen = (url: string) => {
         navigation.navigate();
     };
-
+    
     return (
         <View>
             <TouchableOpacity onPress={() => goToNextScreen("home")}>

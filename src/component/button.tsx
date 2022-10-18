@@ -8,7 +8,7 @@ export interface ButtonProps {
     color:string
 }
 
-export default function Button({ title, onPress, color = "blue" }: ButtonProps) {
+export default function Button({ title, onPress, color = "" }: ButtonProps) {
     return (
         <TouchableOpacity onPress={
             onPress
@@ -22,7 +22,9 @@ const styles = StyleSheet.create({
     button :{
 
     },
-    buttonText:{
-
+    buttonText: {
+        color: "white",
+        paddingLeft: 5,
+        paddingRight: 5
     }
 });
