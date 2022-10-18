@@ -4,7 +4,8 @@ import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 export interface ButtonProps {
     title: string;
     //on click redirect to the contact screen
-    onPress: () => void;
+    onPress: () => void,
+    color:string
 }
 
 export default function Button({ title, onPress, color = "blue" }: ButtonProps) {
