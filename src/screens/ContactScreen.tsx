@@ -1,8 +1,9 @@
-import {View} from "react-native";
+import { View, Text } from "react-native";
 
-
-export  default function ContactScreen(){
-    return(
-        <View>Contact screen</View>
-    )
+export default function ContactScreen() {
+  return (
+    <View>
+      <Text>Contact Screen</Text>
+    </View>
+  );
 }
