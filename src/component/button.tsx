@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
 
     },
     buttonText: {
+        fontSize:18,
         color: "white",
         paddingLeft: 5,
         paddingRight: 5

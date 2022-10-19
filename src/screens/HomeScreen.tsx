@@ -2,6 +2,8 @@ import { Text, View, ImageBackground, StyleSheet} from "react-native";
 import Button from "../component/button";
 import Header from '../component/header';
 import {FontAwesome} from "@expo/vector-icons";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function HomeScreen({navigation} : {navigation : any}){
 
@@ -23,7 +25,7 @@ export default function HomeScreen({navigation} : {navigation : any}){
 
                     <View style={styles.itemHead}>
                         <View style={styles.icon}>
-                            <FontAwesome size={30} name="home"  />
+                            <MaterialCommunityIcons size={30} name="fish"  />
                         </View>
                         <Button title="Produits et promotions" color="transparent"  onPress={()=>{navigation.navigate('products')}}  />
                     </View>
@@ -34,14 +36,14 @@ export default function HomeScreen({navigation} : {navigation : any}){
 
                     <View style={styles.item}>
                         <View style={styles.icon}>
-                            <FontAwesome size={30} name="home"  />
+                            <FontAwesome size={30} name="anchor" style={{rotation:45}}  />
                         </View>
                         <Button title="Bâteaux" color="transparent"  onPress={()=>{goToNextScreen('bateaux')}}  />
                     </View>
 
                     <View style={styles.item}>
                         <View style={styles.icon}>
-                            <FontAwesome size={30} name="home"  />
+                            <Ionicons size={30} name="restaurant"  />
                         </View>
                         <Button title="Restaurants" color="transparent"  onPress={()=>{navigation.navigate('restaurants')}}  />
                     </View>
@@ -52,7 +54,7 @@ export default function HomeScreen({navigation} : {navigation : any}){
 
                     <View style={styles.item}>
                         <View style={styles.icon}>
-                            <FontAwesome size={30} name="home"  />
+                            <Ionicons size={30} name="restaurant"  />
                         </View>
                         <Button title="Recettes" color="transparent"  onPress={()=>{navigation.navigate('recette')}}  />
                     </View>
@@ -125,9 +127,11 @@ const styles= StyleSheet.create({
         backgroundColor:"rgba(0,0,0,0.5)"
     },
     icon:{
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center',
         borderRadius:40,
         backgroundColor:"red",
-        padding:5,
         height: 40,
         width:40,
         marginLeft:10
