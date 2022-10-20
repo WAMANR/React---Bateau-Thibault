@@ -23,8 +23,12 @@ export default function App() {
 
   return (
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown:false}}>
-            <Stack.Screen name="home" component={HomeScreen}/>
+        <Stack.Navigator  screenOptions={{
+            headerShown: false,
+            gestureEnabled: true,
+        }}>
+            <Stack.Screen name="home" component={HomeScreen} />
+
             <Stack.Screen name="contact" component={ContactScreen} />
         </Stack.Navigator>
       </NavigationContainer>
