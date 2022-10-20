@@ -83,7 +83,7 @@ export default function HomeScreen({navigation} : {navigation : any}){
                         <View style={styles.icon}>
                             <Image style={styles.image} source={require('../../assets/icon/tourteau.png')}  />
                         </View>
-                        <Button title="Contact" color="transparent"  onPress={()=>{goToNextScreen('bateaux')}}  />
+                        <Button title="Contact" color="transparent"  onPress={()=>{goToNextScreen('contact')}}  />
                     </View>
 
                 </View>
