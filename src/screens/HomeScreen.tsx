@@ -8,12 +8,12 @@ import { Ionicons } from '@expo/vector-icons';
 export default function HomeScreen({navigation} : {navigation : any}){
 
     const goToNextScreen = (url:string) =>{
-        navigation.navigate('contact')
+        navigation.navigate(url)
     }
 
     return(
         <View style={{flex:1}}>
-
+            
             <ImageBackground source={require('../../assets/image/home-background.png')} resizeMode="cover" style={styles.image}>
             <Header />
             <View style={{flex:3}}>

@@ -4,10 +4,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from "./src/screens/HomeScreen";
 import ContactScreen from "./src/screens/ContactScreen";
+import { useFonts } from 'expo-font';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    'Sail': require('./assets/fonts/Sail-Regular.otf'),
+  });
   return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown:false}}>
