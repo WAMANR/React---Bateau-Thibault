@@ -4,6 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from "./src/screens/HomeScreen";
 import ContactScreen from "./src/screens/ContactScreen";
+import Basket from "./src/screens/BasketScreen";
+import Shop from './src/screens/ShopScreen';
+
+
 import SinglePageScreen from "./src/screens/SinglePageScreen"
 import { Header } from 'react-native/Libraries/NewAppScreen';
 const Stack = createNativeStackNavigator();
@@ -30,6 +34,8 @@ export default function App() {
             <Stack.Screen name="home" component={HomeScreen} />
 
             <Stack.Screen name="contact" component={ContactScreen} />
+            <Stack.Screen name="products" component={Shop} />
+            <Stack.Screen name="basket" component={Basket} />
         </Stack.Navigator>
       </NavigationContainer>
   );
