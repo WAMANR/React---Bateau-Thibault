@@ -63,6 +63,23 @@ export default function Basket() {
           })
         }
       </Card>
+      <Card>
+        <Card.Title>Total price : </Card.Title>
+        <Card.Divider>
+          <View>
+            <Text style={{ marginBottom: 10 }}>
+              Total price :{" "}
+              {
+                // calculate the total price of the basket
+                basket.reduce((acc: any, item: any) => {
+                  return acc + item.price * item.quantity;
+                }, 0)
+              }{" "}
+              €
+            </Text>
+          </View>
+        </Card.Divider>
+      </Card>
 
       <Card>
         <Card.Title>
