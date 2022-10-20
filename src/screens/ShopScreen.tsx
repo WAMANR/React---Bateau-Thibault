@@ -217,42 +217,53 @@ export default function Shop() {
   
 
   // add quantity for the product 
-  const addQuantity = (id) => {
-    const newProducts = products.map((product) => {
-      if (product.id === id) {
-        product.quantity = product.quantity + 1;
+  const addQuantity = async (id) => {
+    AsyncStorage.getItem("cart").then((cart) => {
+      const cartItems = JSON.parse(cart);
+      const product = cartItems.find((item) => item.id === id);
+      if (product) {
+        product.quantity += 1;
+      } else {
+        const product = allItems.find((item) => item.id === id);
+        product.quantity = 1;
+        cartItems.push(product);
       }
-      return product;
+      AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
+        setProducts(cartItems);
+      });
+    }).catch((err) => {
+      console.log(err);
+      AsyncStorage.setItem("cart", JSON.stringify([])).then(() => {
+        setProducts([]);
+        console.log("error", err);
+      });
     });
-    setProducts(newProducts);
 
-    AsyncStorage.setItem("cart", JSON.stringify(newProducts)).then(() => {
-      console.log("saved");
-    }
-    );
-
-    AsyncStorage.getItem("cart").then((data) => {
-      console.log("data", data);
-    });
   };
 
   // remove quantity for the product
   const removeQuantity = (id) => {
-    const newProducts = products.map((product) => {
-      if (product.id === id) {
-        if(product.quantity > 0){
-          product.quantity = product.quantity - 1;
+    AsyncStorage.getItem("cart").then((cart) => {
+      const cartItems = JSON.parse(cart);
+      const product = cartItems.find((item) => item.id === id);
+      if (product) {
+        product.quantity -= 1;
+        if (product.quantity === 0) {
+          const index = cartItems.indexOf(product);
+          cartItems.splice(index, 1);
         }
       }
-      return product;
+      AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
+        setProducts(cartItems);
+      });
+    }).catch((err) => {
+      console.log(err);
+      AsyncStorage.setItem("cart", JSON.stringify([])).then(() => {
+        setProducts([]);
+        console.log("error", err);
+      });
     });
-    setProducts(newProducts);
-    // save all data  in async storage
-    AsyncStorage.setItem("cart", JSON.stringify(newProducts)).then(() => {
-      console.log("saved");
-      console.log("newProducts", newProducts);
-    }
-    );
+   
   }
 
 
