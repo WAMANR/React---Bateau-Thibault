@@ -247,10 +247,10 @@ export default function Shop() {
       const cartItems = JSON.parse(cart);
       const product = cartItems.find((item) => item.id === id);
       if (product) {
+        if (product.quantity !== 0) {
+
         product.quantity -= 1;
-        if (product.quantity === 0) {
-          const index = cartItems.indexOf(product);
-          cartItems.splice(index, 1);
+
         }
       }
       AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
