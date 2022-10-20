@@ -4,56 +4,47 @@ import Header from '../component/header';
 import {FontAwesome} from "@expo/vector-icons";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+    
 
 export default function ContactScreen({navigation} : {navigation : any}){
 
     return(
-
-        <ImageBackground source={require('../../assets/image/home-background.png')} style={styles.bgImage}>
-      <ScrollView>
+    
+    <ImageBackground source={require('../../assets/image/home-background.png')} style={styles.bgImage}>
+        <SafeAreaView style={{flex:1}}>
+        <Header />
         <View style={{flex:1}}>
-          
-            
-            <Header />
-            <View style={{flex:2}}>
+        
+        <ScrollView>
+            <View style={{ padding:20}}>
                 <Text style={styles.titleText}>Contacts</Text>
             </View>
-            <View style={{flex:5}}>
+            <View>
               <Image source={require('../../assets/image/thibault.jpg')} style={styles.image}></Image>
             </View>
             <View style={{flex:4}}>
-              <Text style={styles.text1}>{`
-06.63.99.99.78
-lebateaudethibault@gmail.com  
-www.facebook.com/lebateaudethibault
-              `}
+              <Text style={styles.text1}>
+                <br/>06.63.99.99.78
+                <br/>lebateaudethibault@gmail.com  
+                <br/>www.facebook.com/lebateaudethibault
               </Text>
-              <Text style={styles.text2}>{`
-Qu'il est chaud le soleil
-Quand nous sommes en vacances
-Y'a d'la joie, des hirondelles
-C'est le sud de la France
-Papa bricole au garage
-Maman lit dans la chaise longue
-Dans ce joli paysage
-Moi, je me balande en tonge
-
-Que du bonheur!
-Que du bonheur!
-              `}
+              <Text style={styles.text2}>
+                <br/>Qu'il est chaud le soleil
+                <br/>Quand nous sommes en vacances
+                <br/>Y'a d'la joie, des hirondelles
+                <br/>C'est le sud de la France
+                <br/>Papa bricole au garage
+                <br/>Maman lit dans la chaise longue
+                <br/>Dans ce joli paysage
+                <br/>Moi, je me balande en tonge
+                <br/><br/>Que du bonheur!
+                <br/>Que du bonheur!
               </Text>
-            </View>
-
-            <View style={{flex:4}}>
-              
-            </View>
-   
-
-            
+            </View>   
+            </ScrollView>       
         </View>
-        
-        </ScrollView>
-        </ImageBackground>
+        </SafeAreaView>   
+    </ImageBackground>
     )
 
     // add a background image to the home screen
@@ -65,19 +56,23 @@ const styles= StyleSheet.create({
 
     titleText:{
         textAlign : "center",
-        fontSize : 30
+        fontSize : 30,
+        fontFamily: 'Sail'
     },
     text1:{
         textAlign : "center",
-        fontSize : 20
+        fontSize : 20,
+        fontFamily: 'Sail'
     },
     text2:{
       textAlign : "center",
-      fontSize : 15
+      fontSize : 15,
+      padding : 20,
+      fontFamily: 'Sail'
     },
     image:{
         width : "100%",
-        height : "100%",
+        height : 200,
         resizeMode : 'contain'
         
     },
