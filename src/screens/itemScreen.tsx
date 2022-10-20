@@ -1,9 +1,10 @@
-import {Text, View, ImageBackground, StyleSheet, Image, SafeAreaView} from "react-native";
+import {Text, View, ImageBackground, StyleSheet, Image, SafeAreaView, ScrollView} from "react-native";
 import Button from "../component/button";
 import Header from '../component/header';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import { useRoute } from '@react-navigation/native';
+import { useRoute, } from '@react-navigation/native';
+import {requireIcon} from "../functions/requireImage";
 
 
 
@@ -11,33 +12,64 @@ export default function ItemScreen({navigation} :{navigation : any}){
     const route = useRoute();
     let  data = require('../../assets/data/item.json');
 
-    let res = data.filter(json => json.name = route.name )
+    //get our itemList for the current page
+    var res = data.filter(json => json.name === route.name );
+    var itemList=res[0].item;
+
+
+    const goToNextScreen = (url:string, item:any) =>{
+        navigation.navigate(url,item)
+
+    }
 
     return(
         <SafeAreaView style={{flex:1}}>
             <ImageBackground source={require('../../assets/image/background.png')} resizeMode="cover" style={styles.image}>
                 <Header />
-                <View>
+                <ScrollView>
+                <View style={{marginBottom:48}}>
+                    <Text style={styles.title}>
+                        {res[0].pageTitlte}
+                    </Text>
 
-                    <View style={styles.containerItemSecondary}>
+                    <View style={{marginTop:12, alignSelf:'center'}}>
 
-
-                        <View style={styles.item}>
-                            <View style={styles.icon}>
-                                <Image style={styles.image} source={require('../../assets/icon/recette.png')}  />
-                            </View>
-                            <Button title="Recettes" color="transparent"  onPress={()=>{navigation.navigate('recette')}}  />
+                        <View style={styles.fontContainer}>
+                            <Ionicons style={styles.fontIcon} name="call"></Ionicons>
+                            <Text>06.63.99.99.78</Text>
                         </View>
 
-                        <View style={styles.item}>
-                            <View style={styles.icon}>
-                                <Image style={styles.image} source={require('../../assets/icon/tourteau.png')}  />
-                            </View>
-                            <Button title="Contact" color="transparent"  onPress={()=>{goToNextScreen('contact')}}  />
+                        <View style={styles.fontContainer}>
+                            <MaterialCommunityIcons style={styles.fontIcon} name="email-edit"></MaterialCommunityIcons>
+                            <Text>lebateau dethibault@gmail.com</Text>
+                        </View>
+
+                        <View style={styles.fontContainer}>
+                            <Ionicons style={styles.fontIcon} name="logo-facebook"></Ionicons>
+                            <Text>www.facebook.com/lebateaudethibault</Text>
                         </View>
 
                     </View>
+
                 </View>
+                <View style={{flex: 3}}>
+                    <View style={styles.containerItemSecondary}>
+                        {
+                            itemList.map((item : any) => {
+                                return (
+                                    <View style={styles.item}>
+                                        <View style={styles.icon}>
+                                            <Image style={styles.image} source={requireIcon(item.name)}  />
+                                        </View>
+                                        <Button title={item.name} color="transparent"  onPress={()=>{goToNextScreen('singlePage',item)}}  />
+                                    </View>
+                                )
+                            })
+                        }
+                    </View>
+                </View>
+                </ScrollView>
+
             </ImageBackground>
         </SafeAreaView>
     )
@@ -45,66 +77,33 @@ export default function ItemScreen({navigation} :{navigation : any}){
 
 const styles= StyleSheet.create({
     title:{
-        fontSize:16,
-        textAlign:'center',
-        fontWeight : "bold",
-        marginBottom:5
+        fontSize:24,
+        marginTop:48,
+        textAlign:'center'
     },
     image:{
         width : "100%",
         height : "100%"
     },
-    containerItemPrimary:{
-        flexDirection:'row',
-        justifyContent: 'space-around',
-        paddingLeft:"1%",
-        paddingRight:"1%",
-
-    },
     containerItemSecondary:{
-        flexDirection:'row',
-        justifyContent: 'space-around',
-        paddingLeft:"1%",
-        paddingRight:"1%",
-
-    },
-    containerItemHead:{
-        marginBottom:5,
-        paddingLeft:"1%",
-        paddingRight:"1%",
-        alignSelf:'center',
-        width:"98%",
-    },
-    itemHead:{
-        flexDirection:'row',
-        alignItems: 'center',
-        backgroundColor:"rgba(0,0,0,0.3)",
-        paddingTop:10,
-        paddingBottom:10,
-        paddingRight:2,
-        paddingLeft:2,
-
+        flexDirection:'column',
+        paddingLeft:"5%",
+        paddingRight:"5%",
     },
     item:{
         flexDirection :'row',
         marginBottom:5,
-        width: "48%",
-        paddingTop:10,
-        paddingBottom:10,
-        paddingRight:2,
-        paddingLeft:2,
+        width: "100%",
+        paddingTop:20,
+        paddingBottom:20,
         alignItems:'center',
         backgroundColor:"rgba(0,0,0,0.3)"
     },
     icon:{
-        flexDirection:'row',
-        justifyContent:'center',
-        alignItems:'center',
-        borderRadius:40,
-        backgroundColor:"red",
-        height: 40,
-        width:40,
-        marginLeft:10
+        width:50,
+        height:50,
+        marginLeft:10,
+        marginRight:30
     },
     fontContainer:{
         flexDirection: 'row',
@@ -114,4 +113,5 @@ const styles= StyleSheet.create({
         fontSize:16,
         color:'#485552'
     }
+
 })

@@ -41,6 +41,8 @@ export default function App() {
             <Stack.Screen name="basket" component={Basket} />
             <Stack.Screen name="bateaux" component={ItemScreen} />
             <Stack.Screen name="recette" component={ItemScreen} />
+            <Stack.Screen name="restaurants" component={ItemScreen} />
+            <Stack.Screen name="singlePage" component={SinglePageScreen} />
         </Stack.Navigator>
       </NavigationContainer>
   );

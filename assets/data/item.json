@@ -1,6 +1,8 @@
 [
   {
     "name": "bateaux",
+    "pageTitlte" : "Nos bateaux partenaires",
+    "descriptionPage": "Tous les eaux mènent à Thibault",
     "item": [
       {
         "name" : "DeLaBrise",
@@ -30,6 +32,8 @@
   },
   {
     "name" : "restaurants",
+    "pageTitlte" : "Restaurants partenaires",
+    "descriptionPage": "Tous les restaurants partenaires avec le bateau de Thibault",
     "item" : [
       {
         "name" : "Bistrot Gascons",
@@ -65,6 +69,8 @@
   },
   {
     "name" : "recette",
+    "pageTitlte" : "Nos recettes",
+    "descriptionPage": "Tous les recettes du bateau de Thibault",
     "item" : [
       {
         "name" : "Homard",
