@@ -4,10 +4,11 @@ import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 export interface ButtonProps {
     title: string;
     //on click redirect to the contact screen
-    onPress: () => void;
+    onPress: () => void,
+    color:string
 }
 
-export default function Button({ title, onPress, color = "blue" }: ButtonProps) {
+export default function Button({ title, onPress, color = "" }: ButtonProps) {
     return (
         <TouchableOpacity onPress={
             onPress
@@ -21,7 +22,10 @@ const styles = StyleSheet.create({
     button :{
 
     },
-    buttonText:{
-
+    buttonText: {
+        fontSize:18,
+        color: "white",
+        paddingLeft: 5,
+        paddingRight: 5
     }
 });
