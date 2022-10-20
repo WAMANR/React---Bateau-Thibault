@@ -16,6 +16,8 @@ const Stack = createNativeStackNavigator();
 import * as React from 'react';
 import * as Font from 'expo-font';
 
+import ItemScreen from "./src/screens/itemScreen";
+
 
 
 export default function App() {
@@ -37,6 +39,10 @@ export default function App() {
             <Stack.Screen name="contact" component={ContactScreen} />
             <Stack.Screen name="products" component={Shop} />
             <Stack.Screen name="basket" component={Basket} />
+            <Stack.Screen name="bateaux" component={ItemScreen} />
+            <Stack.Screen name="recette" component={ItemScreen} />
+            <Stack.Screen name="restaurants" component={ItemScreen} />
+            <Stack.Screen name="singlePage" component={SinglePageScreen} />
         </Stack.Navigator>
       </NavigationContainer>
   );

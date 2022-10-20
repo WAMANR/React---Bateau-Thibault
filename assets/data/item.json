@@ -1,0 +1,108 @@
+[
+  {
+    "name": "bateaux",
+    "pageTitlte" : "Nos bateaux partenaires",
+    "descriptionPage": "Tous les eaux mènent à Thibault",
+    "item": [
+      {
+        "name" : "DeLaBrise",
+        "completeName" : "De La Brise",
+        "src" : "../../assets/bateau-icon/deLaBrise",
+        "description" : "Qu'il est chaud le soleil Quand nous sommes en vacances Y a d' la joie, des hirondelles C'est le sud de la France Papa bricole au garage Maman lit dans la chaise longue Dans ce joli paysage Moi, je me balade en tongs Que de bonheur! Que de bonheur!"
+      },
+      {
+        "name" : "Saphir",
+        "completeName" : "Saphir",
+        "src" : "../../assets/bateau-icon/saphir",
+        "description" : "Qu'il est chaud le soleil Quand nous sommes en vacances Y a d' la joie, des hirondelles C'est le sud de la France Papa bricole au garage Maman lit dans la chaise longue Dans ce joli paysage Moi, je me balade en tongs Que de bonheur! Que de bonheur!"
+      },
+      {
+        "name" : "GastMichers",
+        "completeName" : "Gast Michers",
+        "src" : "../../assets/bateau-icon/gastMicher",
+        "description" : "Qu'il est chaud le soleil Quand nous sommes en vacances Y a d' la joie, des hirondelles C'est le sud de la France Papa bricole au garage Maman lit dans la chaise longue Dans ce joli paysage Moi, je me balade en tongs Que de bonheur! Que de bonheur!"
+      },
+      {
+        "name" : "Aquilon",
+        "completeName" : "Aquilon",
+        "src" : "../../assets/bateau-icon/aquilon",
+        "description" : "Qu'il est chaud le soleil Quand nous sommes en vacances Y a d' la joie, des hirondelles C'est le sud de la France Papa bricole au garage Maman lit dans la chaise longue Dans ce joli paysage Moi, je me balade en tongs Que de bonheur! Que de bonheur!"
+      }
+    ]
+  },
+  {
+    "name" : "restaurants",
+    "pageTitlte" : "Restaurants partenaires",
+    "descriptionPage": "Tous les restaurants partenaires avec le bateau de Thibault",
+    "item" : [
+      {
+        "name" : "Bistrot Gascons",
+        "completeName" : "Le Bistrot des Gascons",
+        "src" : "../../assets/restaurant-icon/restaurant-le-bistrot-des-gascons",
+        "description": "01.45.57.75.17 - 26 Av. de Tourville, 75007 Paris - lebistrotdesgascons.fr"
+      },
+      {
+        "name" : "Bistrot Landais",
+        "completeName" : "Le Bistrot Landais",
+        "src" : "../../assets/restaurant-icon/restaurant-le-bistrot-landais",
+        "description": "01.49.45.11.55 - 96 Rue des Rosiers, 93400 Saint-Ouen-sur-Seine - www.facebook.com/lebistrotlandais"
+      },
+      {
+        "name" : "Les Fous de l'Île",
+        "completeName" : "Les Fous de l'Île",
+        "src" : "../../assets/restaurant-icon/restaurant-fou-de-lile",
+        "description": "01.43.25.76.67 - 33 Rue des Deux Ponts, 75004 Paris - lesfousdelile.becsparisiens.fr"
+      },
+      {
+        "name" : "Villa9Trois",
+        "completeName" : "Villa9Trois",
+        "src" : "../../assets/restaurant-icon/restaurant-villa9trois",
+        "description": "01.42.65.24.85 - 97 Bd Haussmann, 75008 Paris - villa9trois.com"
+      },
+      {
+        "name" : "Le Sommelier",
+        "completeName" : "Le Bistrot du Sommelier",
+        "src" : "../../assets/restaurant-icon/restaurant-le-bistrot-du-sommelier",
+        "description": "01.45.57.75.17 - 26 Av. de Tourville, 75007 Paris - bistrotdusommelier.fr"
+      }
+    ]
+  },
+  {
+    "name" : "recette",
+    "pageTitlte" : "Nos recettes",
+    "descriptionPage": "Tous les recettes du bateau de Thibault",
+    "item" : [
+      {
+        "name" : "Homard",
+        "completeName" : "Homard en chaud-froid",
+        "src" : "../../assets/recette-icon/homardRecette",
+        "description" : "Faites cuire les homards dans de l'eau bouillante avec du thym, du laurier, du sel et du poivre de Cayenne. Laissez cuire 20 minutes. Égouttez-les et laissez-les refroidir. Découpez les coffres des homards dans le sens de la longueur. Mélangez la mayonnaise avec le cognac, le corail et la ciboulette ciselée."
+      },
+      {
+        "name" : "Raie",
+        "completeName" : "Joue de raie",
+        "src" : "../../assets/recette-icon/poulpe",
+        "description" : "Qu'il est chaud le soleil Quand nous sommes en vacances Y a d' la joie, des hirondelles C'est le sud de la France Papa bricole au garage Maman lit dans la chaise longue Dans ce joli paysage Moi, je me balade en tongs Que de bonheur! Que de bonheur!"
+      },
+      {
+        "name" : "Saint-Jacques",
+        "completeName" : "Noix de Saint-Jacques flambées au cognac",
+        "src" : "../../assets/recette-icon/saintJacques",
+        "description" : "Faire fondre du beurre avec des échalotes puis ajouter les noix de Saint-Jacques. Les faire revenir en laissant le milieu translucide puis les retirer du feu. Ajouter l'ail et le persil dans la poêle et laisser cuire quelques secondes. Bien faire chauffer la poêle, puis flamber au Cognac. Une fois la flamme éteinte, ajouter les noix de Saint-Jacques (il ne faut pas les flamber car elles perdraient leur saveur). Déguster chaud nature ou accompagné d'une fondue de poireaux."
+      },
+      {
+        "name" : "Tourteau",
+        "completeName" : "Tourteau linguine",
+        "src" : "../../assets/recette-icon/tourteau",
+        "description" : "Qu'il est chaud le soleil Quand nous sommes en vacances Y a d' la joie, des hirondelles C'est le sud de la France Papa bricole au garage Maman lit dans la chaise longue Dans ce joli paysage Moi, je me balade en tongs Que de bonheur! Que de bonheur!"
+      },
+      {
+        "name" : "Bar",
+        "completeName" : "Bar de ligne",
+        "src" : "../../assets/recette-icon/barRecette",
+        "description" : "Qu'il est chaud le soleil Quand nous sommes en vacances Y a d' la joie, des hirondelles C'est le sud de la France Papa bricole au garage Maman lit dans la chaise longue Dans ce joli paysage Moi, je me balade en tongs Que de bonheur! Que de bonheur!"
+      }
+    ]
+  }
+
+]
