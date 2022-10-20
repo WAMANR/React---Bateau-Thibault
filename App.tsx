@@ -15,7 +15,6 @@ const Stack = createNativeStackNavigator();
 
 import * as React from 'react';
 import * as Font from 'expo-font';
-import { useFonts } from 'expo-font';
 
 
 

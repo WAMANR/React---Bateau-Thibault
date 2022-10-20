@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Button from "../component/button";
 import { AsyncStorage } from "react-native";
+import Header from "../component/header";
 
 export default function Basket() {
     const navigation = useNavigation();
@@ -28,7 +29,7 @@ export default function Basket() {
 
     return (
         <View>
-            
+            <Header></Header>
              {
                 // only display if the basket item quantity is greater than 0
                 basket.map((item : any) => {
