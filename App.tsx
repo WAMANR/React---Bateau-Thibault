@@ -15,8 +15,8 @@ const Stack = createNativeStackNavigator();
 
 import * as React from 'react';
 import * as Font from 'expo-font';
-import ItemScreen from "./src/screens/itemScreen";
 
+import ItemScreen from "./src/screens/itemScreen";
 
 
 
