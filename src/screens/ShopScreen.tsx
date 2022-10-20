@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Button from "../component/button";
@@ -276,7 +277,7 @@ export default function Shop() {
   };
 
   return (
-    <View style={{ backgroundColor: "#EFEDED", alignContent: "center" }}>
+    <SafeAreaView style={{ backgroundColor: "#EFEDED", alignContent: "center" }}>
       <Header></Header>
       {products.map((item, index) => (
         <ScrollView>
@@ -328,7 +329,7 @@ export default function Shop() {
           </View>
         </ScrollView>
       ))}
-    </View>
+    </SafeAreaView>
   );
   /*
   return (

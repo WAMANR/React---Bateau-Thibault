@@ -23,7 +23,7 @@ import ItemScreen from "./src/screens/itemScreen";
 export default function App() {
 
   const [fontsLoaded] = useFonts({
-    'Sail': require('./assets/Fonts/Sail-Regular.otf'),
+    'Sail': require('./assets/Fonts/Sail-Regular.ttf'),
     'Noteworthy-Lt' : require('./assets/Fonts/Noteworthy-Lt.ttf'),
     'Noteworthy-Bold' : require('./assets/Fonts/Noteworthy-Bold.ttf')
   });
