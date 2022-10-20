@@ -11,7 +11,7 @@ export default function Header() {
   };
 
   return (
-    <View>
+    <View  style={styles.header}>
       <Button
         title="Basket"
         onPress={() => goToNextScreen("basket")}
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 20,
+    paddindTop: 20,
   },
   itemCount: {
     color: "#fff",
