@@ -1,9 +1,19 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Button from "../component/button";
 import { AsyncStorage } from "react-native";
+import Header from "../component/header";
+
+import { Card, ListItem, Icon } from "react-native-elements";
 
 export default function Shop() {
   const navigation = useNavigation();
@@ -214,63 +224,116 @@ export default function Shop() {
   const [products, setProducts] = useState(allItems);
   const [quantity, setQuantity] = useState<number>(1);
   const [item, setItem] = useState(null);
-  
 
-  // add quantity for the product 
+  // add quantity for the product
   const addQuantity = async (id) => {
-    AsyncStorage.getItem("cart").then((cart) => {
-      const cartItems = JSON.parse(cart);
-      const product = cartItems.find((item) => item.id === id);
-      if (product) {
-        product.quantity += 1;
-      } else {
-        const product = allItems.find((item) => item.id === id);
-        product.quantity = 1;
-        cartItems.push(product);
-      }
-      AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
-        setProducts(cartItems);
+    AsyncStorage.getItem("cart")
+      .then((cart) => {
+        const cartItems = JSON.parse(cart);
+        const product = cartItems.find((item) => item.id === id);
+        if (product) {
+          product.quantity += 1;
+        } else {
+          const product = allItems.find((item) => item.id === id);
+          product.quantity = 1;
+          cartItems.push(product);
+        }
+        AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
+          setProducts(cartItems);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        AsyncStorage.setItem("cart", JSON.stringify([])).then(() => {
+          setProducts([]);
+          console.log("error", err);
+        });
       });
-    }).catch((err) => {
-      console.log(err);
-      AsyncStorage.setItem("cart", JSON.stringify([])).then(() => {
-        setProducts([]);
-        console.log("error", err);
-      });
-    });
-
   };
 
   // remove quantity for the product
   const removeQuantity = (id) => {
-    AsyncStorage.getItem("cart").then((cart) => {
-      const cartItems = JSON.parse(cart);
-      const product = cartItems.find((item) => item.id === id);
-      if (product) {
-        product.quantity -= 1;
-        if (product.quantity === 0) {
-          const index = cartItems.indexOf(product);
-          cartItems.splice(index, 1);
+    AsyncStorage.getItem("cart")
+      .then((cart) => {
+        const cartItems = JSON.parse(cart);
+        const product = cartItems.find((item) => item.id === id);
+        if (product) {
+          if (product.quantity !== 0) {
+            product.quantity -= 1;
+          }
         }
-      }
-      AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
-        setProducts(cartItems);
+        AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
+          setProducts(cartItems);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        AsyncStorage.setItem("cart", JSON.stringify([])).then(() => {
+          setProducts([]);
+          console.log("error", err);
+        });
       });
-    }).catch((err) => {
-      console.log(err);
-      AsyncStorage.setItem("cart", JSON.stringify([])).then(() => {
-        setProducts([]);
-        console.log("error", err);
-      });
-    });
-   
-  }
+  };
 
-
-
-  
+  return (
+    <View style={{ backgroundColor: "#EFEDED", alignContent: "center" }}>
+      <Header></Header>
+      {products.map((item, index) => (
+        <ScrollView>
+          <View style={{ borderRadius: 15 }}>
+            <Card style={{ borderColor: "black", borderRadius: 20, margin: 5 }}>
+              <Card.Title>{item.name}</Card.Title>
+              <Card.Divider>
+                <View>
+                  <Text
+                    style={{
+                      color: "#CABCBC",
+                    }}
+                  >
+                    {item.comments}
+                  </Text>
+                  <Text>
+                    {item.price} €/{item.unit}
+                  </Text>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      marginTop: 15,
+                      borderRadius: 100 / 2,
+                      alignItems: "center",
+                    }}
+                  >
+                    <Button
+                      title="+"
+                      color="#2D682B"
+                      onPress={() => addQuantity(item.id)}
+                    >
+                      Add
+                    </Button>
+                    <Button title={item.quantity.toString()} color="#CABCBC">
+                      {item.quantity}
+                    </Button>
+                    <Button
+                      title="-"
+                      color="#AF2222"
+                      onPress={() => removeQuantity(item.id)}
+                    >
+                      Remove
+                    </Button>
+                  </View>
+                </View>
+              </Card.Divider>
+            </Card>
+          </View>
+        </ScrollView>
+      ))}
+    </View>
+  );
+  /*
   return (
     <View>
+      <Header></Header>
       {products.map((item, index) => (
         <View key={index}>
           <Text>{item.name}</Text>
@@ -291,7 +354,7 @@ export default function Shop() {
         </View>
       ))}
     </View>
-  );
+  );*/
 }
 
 const styles = StyleSheet.create({

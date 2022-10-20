@@ -5,17 +5,22 @@ import {FontAwesome} from "@expo/vector-icons";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { useFonts } from "expo-font";
+import {useNavigation, useRoute} from "@react-navigation/native";
+import {requireImage} from "../functions/requireImage";
 
-export default function SinglePageScreen({navigation} : {navigation : any}){
+export default function SinglePageScreen(){
+    const route=useRoute();
+    const navigation = useNavigation();
 
     const goToNextScreen = (url:string) =>{
-        navigation.navigate('contact')
+        navigation.navigate(url)
     }
 
     let description : string = "desc";
     let titre : string = "titre de la page"
-    let imgsrc : string = '../../assets/bateau-icon/aquilon2.png'
-    
+    let imgsrc : string = '../../assets/bateau-icon/aquilon_icon.png'
+
+    var item  = route.params;
 
     return(
         <ImageBackground source={require('../../assets/image/home-background.png')} resizeMode="cover" style={style.backgroundImage}>
@@ -23,8 +28,8 @@ export default function SinglePageScreen({navigation} : {navigation : any}){
          <SafeAreaView style={style.container}>
             {/* <Header/> */}
                 <View style={style.topView}>
-                    <Text style={style.title}>{titre}</Text>
-                    <Image style={style.image} source={require(imgsrc)} />
+                    <Text style={style.title}>{item.completeName}</Text>
+                    <Image style={style.image} source={requireImage(item.name)} />
                 </View>
 
                 <View style={style.bottomView}>
@@ -33,7 +38,7 @@ export default function SinglePageScreen({navigation} : {navigation : any}){
                     </View>
                     <View style={{height:'100%',width:"70%",justifyContent:"center",alignItems:"center"}}>
                         <Text style={style.desc}>
-                            {description}
+                            {item.description}
                         </Text>
                     </View>
                 </View>
@@ -60,7 +65,8 @@ const style= StyleSheet.create({
     },
 
     image:{
-        height:'80%'
+        height:'80%',
+        width: '100%'
     },
 
     topView : {
