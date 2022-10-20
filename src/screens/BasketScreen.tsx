@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import SelectDropdown from "react-native-select-dropdown";
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, ToastAndroid } from "react-native";
+import { View, Text, StyleSheet, ToastAndroid,SafeAreaView } from "react-native";
 
 import { Card, ListItem, Icon } from "react-native-elements";
 import { AntDesign } from "@expo/vector-icons";
@@ -36,7 +36,7 @@ export default function Basket() {
   ];
 
   return (
-    <View>
+    <SafeAreaView>
       <Header></Header>
 
       <Card>
@@ -110,7 +110,7 @@ export default function Basket() {
           />
         </View>
       </Card>
-    </View>
+    </SafeAreaView>
   );
 }
 
