@@ -226,8 +226,16 @@ export default function Shop() {
   const [quantity, setQuantity] = useState<number>(1);
   const [item, setItem] = useState(null);
 
+
+
   // add quantity for the product
   const addQuantity = async (id) => {
+    const tmpProds = [...products];
+    // update the quantity +/- 1
+    const index =  products.findIndex((product) => product.id === id);
+    tmpProds[index].quantity = tmpProds[index].quantity + 1;
+    setProducts(tmpProds);
+  
     AsyncStorage.getItem("cart")
       .then((cart) => {
         const cartItems = JSON.parse(cart);
@@ -238,9 +246,11 @@ export default function Shop() {
           const product = allItems.find((item) => item.id === id);
           product.quantity = 1;
           cartItems.push(product);
+          
         }
         AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
-          setProducts(cartItems);
+          //setProducts(cartItems);
+          console.log("save");
         });
       })
       .catch((err) => {
@@ -254,6 +264,12 @@ export default function Shop() {
 
   // remove quantity for the product
   const removeQuantity = (id) => {
+
+    const tmpProds = [...products];
+    // update the quantity +/- 1
+    const index =  products.findIndex((product) => product.id === id);
+    (tmpProds[index].quantity > 0) ? tmpProds[index].quantity = tmpProds[index].quantity - 1 : tmpProds[index].quantity = 0 ;
+    setProducts(tmpProds);
     AsyncStorage.getItem("cart")
       .then((cart) => {
         const cartItems = JSON.parse(cart);
@@ -264,7 +280,8 @@ export default function Shop() {
           }
         }
         AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
-          setProducts(cartItems);
+          //setProducts(cartItems);
+          console.log("save");
         });
       })
       .catch((err) => {

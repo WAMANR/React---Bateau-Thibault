@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import SelectDropdown from "react-native-select-dropdown";
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, ToastAndroid } from "react-native";
+import { View, Text, StyleSheet, ToastAndroid,SafeAreaView } from "react-native";
 
 import { Card, ListItem, Icon } from "react-native-elements";
 import { AntDesign } from "@expo/vector-icons";
@@ -36,7 +36,7 @@ export default function Basket() {
   ];
 
   return (
-    <View>
+    <SafeAreaView>
       <Header></Header>
 
       <Card>
@@ -62,6 +62,23 @@ export default function Basket() {
             }
           })
         }
+      </Card>
+      <Card>
+        <Card.Title>Total price : </Card.Title>
+        <Card.Divider>
+          <View>
+            <Text style={{ marginBottom: 10 }}>
+              Total price :{" "}
+              {
+                // calculate the total price of the basket
+                basket.reduce((acc: any, item: any) => {
+                  return acc + item.price * item.quantity;
+                }, 0)
+              }{" "}
+              €
+            </Text>
+          </View>
+        </Card.Divider>
       </Card>
 
       <Card>
@@ -93,7 +110,7 @@ export default function Basket() {
           />
         </View>
       </Card>
-    </View>
+    </SafeAreaView>
   );
 }
 
