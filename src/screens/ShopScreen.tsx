@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Button from "../component/button";
 import { AsyncStorage } from "react-native";
+import Header from "../component/header";
 
 export default function Shop() {
   const navigation = useNavigation();
@@ -271,6 +272,7 @@ export default function Shop() {
   
   return (
     <View>
+      <Header></Header>
       {products.map((item, index) => (
         <View key={index}>
           <Text>{item.name}</Text>

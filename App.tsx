@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from "./src/screens/HomeScreen";
 import ContactScreen from "./src/screens/ContactScreen";
+import { useFonts } from 'expo-font';
 import Basket from "./src/screens/BasketScreen";
 import Shop from './src/screens/ShopScreen';
 
@@ -14,11 +15,11 @@ const Stack = createNativeStackNavigator();
 
 import * as React from 'react';
 import * as Font from 'expo-font';
-import { useFonts } from 'expo-font';
 
 
 
 export default function App() {
+
   const [fontsLoaded] = useFonts({
     'Sail': require('./assets/Fonts/Sail-Regular.otf'),
     'Noteworthy-Lt' : require('./assets/Fonts/Noteworthy-Lt.ttf'),
