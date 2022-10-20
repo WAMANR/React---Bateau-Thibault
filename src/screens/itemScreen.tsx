@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { useRoute, } from '@react-navigation/native';
 import {requireIcon} from "../functions/requireImage";
+import { color } from "react-native-elements/dist/helpers";
 
 
 
@@ -79,7 +80,9 @@ const styles= StyleSheet.create({
     title:{
         fontSize:24,
         marginTop:48,
-        textAlign:'center'
+        textAlign:'center',
+        fontFamily:'Sail',
+        color:'white'
     },
     image:{
         width : "100%",

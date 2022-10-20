@@ -83,7 +83,7 @@ export default function HomeScreen({navigation} : {navigation : any}){
                         <View style={styles.icon}>
                             <Image style={styles.image} source={require('../../assets/icon/tourteau.png')}  />
                         </View>
-                        <Button title="Contact" color="transparent"  onPress={()=>{goToNextScreen('contact')}}  />
+                        <Button title="Contact" color="transparent"  onPress={()=>{navigation.navigate('contact')}}  />
                     </View>
 
                 </View>
@@ -99,6 +99,7 @@ const styles= StyleSheet.create({
         fontSize:16,
         textAlign:'center',
         fontWeight : "bold",
+        fontFamily:'Noteworthy-Bold',
         marginBottom:5
     },
     image:{

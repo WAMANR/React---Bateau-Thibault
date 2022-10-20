@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useFonts } from "expo-font";
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {requireImage} from "../functions/requireImage";
-
+ 
 export default function SinglePageScreen(){
     const route=useRoute();
     const navigation = useNavigation();
@@ -23,9 +23,9 @@ export default function SinglePageScreen(){
     var item  = route.params;
 
     return(
-        <ImageBackground source={require('../../assets/image/home-background.png')} resizeMode="cover" style={style.backgroundImage}>
-
          <SafeAreaView style={style.container}>
+         <ImageBackground source={require('../../assets/image/background.png')} resizeMode="cover" style={style.backgroundImage}>
+         <Header/>
             {/* <Header/> */}
                 <View style={style.topView}>
                     <Text style={style.title}>{item.completeName}</Text>
@@ -42,9 +42,8 @@ export default function SinglePageScreen(){
                         </Text>
                     </View>
                 </View>
-
+                </ImageBackground>
             </SafeAreaView>
-        </ImageBackground>
 
     )
 
