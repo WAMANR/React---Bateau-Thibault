@@ -39,66 +39,59 @@ export default function Basket() {
     <View>
       <Header></Header>
 
-              
       <Card>
+        <Card.Title> Title</Card.Title>
 
-      <Card.Title> Title</Card.Title>
-
-
-      {
-        // only display if the basket item quantity is greater than 0
-        basket.map((item: any) => {
-          if (item.quantity > 0) {
-            return (
+        {
+          // only display if the basket item quantity is greater than 0
+          basket.map((item: any) => {
+            if (item.quantity > 0) {
+              return (
                 <Card.Divider>
-                <View>
-                  <Text style={{ marginBottom: 10 }}>
-                    {item.quantity} {item.unit}
-                  </Text>
-                  <Text>{item.comments}</Text>
-                  <Text style={{ marginBottom: 10 }}>
-                    {item.price * item.quantity} €
-                  </Text>
-                </View>
+                  <View>
+                    <Text style={{ marginBottom: 10 }}>
+                      {item.quantity} {item.unit}
+                    </Text>
+                    <Text>{item.comments}</Text>
+                    <Text style={{ marginBottom: 10 }}>
+                      {item.price * item.quantity} €
+                    </Text>
+                  </View>
                 </Card.Divider>
-
-
-              
-            );
-          }
-        })
-      }
+              );
+            }
+          })
+        }
       </Card>
 
       <Card>
         <Card.Title>
-            Please chose a restaurant to deliver your order :
+          Please chose a restaurant to deliver your order :
         </Card.Title>
         <View>
+          <SelectDropdown
+            data={restaurants}
+            onSelect={(selectedItem, index) => {
+              console.log(selectedItem, index);
+            }}
+            buttonTextAfterSelection={(selectedItem, index) => {
+              ToastAndroid.showWithGravity(
+                "Submitted : " + selectedItem,
+                ToastAndroid.SHORT,
+                ToastAndroid.CENTER
+              );
 
-      <SelectDropdown
-        data={restaurants}
-        onSelect={(selectedItem, index) => {
-          console.log(selectedItem, index);
-        }}
-        buttonTextAfterSelection={(selectedItem, index) => {
-          ToastAndroid.showWithGravity(
-            "Submitted : " + selectedItem,
-            ToastAndroid.SHORT,
-            ToastAndroid.CENTER
-          );
-
-          // text represented after item is selected
-          // if data array is an array of objects then return selectedItem.property to render after item is selected
-          return selectedItem;
-        }}
-        rowTextForSelection={(item, index) => {
-          // text represented for each item in dropdown
-          // if data array is an array of objects then return item.property to represent item in dropdown
-          return item;
-        }}
-      />
-      </View>
+              // text represented after item is selected
+              // if data array is an array of objects then return selectedItem.property to render after item is selected
+              return selectedItem;
+            }}
+            rowTextForSelection={(item, index) => {
+              // text represented for each item in dropdown
+              // if data array is an array of objects then return item.property to represent item in dropdown
+              return item;
+            }}
+          />
+        </View>
       </Card>
     </View>
   );
