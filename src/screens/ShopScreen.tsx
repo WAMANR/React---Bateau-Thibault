@@ -233,10 +233,10 @@ export default function Shop() {
   const addQuantity = async (id) => {
     const tmpProds = [...products];
     // update the quantity +/- 1
-    const index =  products.findIndex((product) => product.id === id);
+    const index = products.findIndex((product) => product.id === id);
     tmpProds[index].quantity = tmpProds[index].quantity + 1;
     setProducts(tmpProds);
-  
+
     AsyncStorage.getItem("cart")
       .then((cart) => {
         const cartItems = JSON.parse(cart);
@@ -247,7 +247,7 @@ export default function Shop() {
           const product = allItems.find((item) => item.id === id);
           product.quantity = 1;
           cartItems.push(product);
-          
+
         }
         AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
           //setProducts(cartItems);
@@ -268,8 +268,8 @@ export default function Shop() {
 
     const tmpProds = [...products];
     // update the quantity +/- 1
-    const index =  products.findIndex((product) => product.id === id);
-    (tmpProds[index].quantity > 0) ? tmpProds[index].quantity = tmpProds[index].quantity - 1 : tmpProds[index].quantity = 0 ;
+    const index = products.findIndex((product) => product.id === id);
+    (tmpProds[index].quantity > 0) ? tmpProds[index].quantity = tmpProds[index].quantity - 1 : tmpProds[index].quantity = 0;
     setProducts(tmpProds);
     AsyncStorage.getItem("cart")
       .then((cart) => {
@@ -295,8 +295,7 @@ export default function Shop() {
   };
 
   return (
-    <SafeAreaView style={{ backgroundColor: "#EFEDED", alignContent: "center",flex:1 }}>
-      <ImageBackground source={require('../../assets/image/background.png')} resizeMode="cover" style={styles.image}>
+    <SafeAreaView style={{ backgroundColor: "#EFEDED", alignContent: "center" }}>
       <Header></Header>
         <ScrollView>
       {products.map((item, index) => (
@@ -330,7 +329,7 @@ export default function Shop() {
                       color="#2D682B"
                       onPress={() => addQuantity(item.id)}
                     >
-                      Add
+                      Ajouter
                     </Button>
                     <Button title={item.quantity.toString()} color="#CABCBC">
                       {item.quantity}
@@ -340,7 +339,7 @@ export default function Shop() {
                       color="#AF2222"
                       onPress={() => removeQuantity(item.id)}
                     >
-                      Remove
+                      Retirer
                     </Button>
                   </View>
                 </View>
@@ -349,8 +348,6 @@ export default function Shop() {
           </View>
 
       ))}
-        </ScrollView>
-      </ImageBackground>
     </SafeAreaView>
   );
   /*
