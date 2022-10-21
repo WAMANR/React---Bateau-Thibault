@@ -1,12 +1,26 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  SafeAreaView,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Button from "../component/button";
 import { AsyncStorage } from "react-native";
 import Header from "../component/header";
 
-export default function ShopScreen({navigation} : {navigation : any}){
+import { Card, ListItem, Icon } from "react-native-elements";
+
+export default function Shop() {
+  const navigation = useNavigation();
+  const goToNextScreen = (url: string) => {
+    navigation.navigate();
+  };
 
   const allItems = [
     {
@@ -20,7 +34,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "Pêche à la corde",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 9,
@@ -33,7 +47,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "Hors saison,  pêche aux casiers",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 3,
@@ -46,7 +60,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "Plus de 1.5kg le poisson",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 2,
@@ -59,7 +73,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "Environ 550-700g la pièce",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 10,
@@ -72,7 +86,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "Hors saison, pêche à l'épuisette",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 1,
@@ -85,7 +99,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "environ 300g",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
 
     {
@@ -99,7 +113,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "Pêche à la corde",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 7,
@@ -112,7 +126,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 8,
@@ -125,7 +139,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 13,
@@ -138,7 +152,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "Médaille d'or Salon Agriculture",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 14,
@@ -151,7 +165,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "Médaille d'or salon agriculture",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 15,
@@ -164,7 +178,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "Médaille d'or salon agriculture",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 16,
@@ -177,7 +191,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 4,
@@ -190,7 +204,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 0.0,
       comments: "Environ 550-700g la portion",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
     {
       id: 6,
@@ -203,7 +217,7 @@ export default function ShopScreen({navigation} : {navigation : any}){
       discount: 5.0,
       comments: "",
       owner: "tig",
-      quantity: 0
+      quantity: 0,
     },
   ];
 
@@ -213,76 +227,168 @@ export default function ShopScreen({navigation} : {navigation : any}){
   const [item, setItem] = useState(null);
 
 
-  // add quantity for the product 
-  const addQuantity = async (id) => {
-    AsyncStorage.getItem("cart").then((cart) => {
-      const cartItems = JSON.parse(cart);
-      const product = cartItems.find((item) => item.id === id);
-      if (product) {
-        product.quantity += 1;
-      } else {
-        const product = allItems.find((item) => item.id === id);
-        product.quantity = 1;
-        cartItems.push(product);
-      }
-      AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
-        setProducts(cartItems);
-      });
-    }).catch((err) => {
-      console.log(err);
-      AsyncStorage.setItem("cart", JSON.stringify([])).then(() => {
-        setProducts([]);
-        console.log("error", err);
-      });
-    });
 
+  // add quantity for the product
+  const addQuantity = async (id) => {
+    const tmpProds = [...products];
+    // update the quantity +/- 1
+    const index =  products.findIndex((product) => product.id === id);
+    tmpProds[index].quantity = tmpProds[index].quantity + 1;
+    setProducts(tmpProds);
+  
+    AsyncStorage.getItem("cart")
+      .then((cart) => {
+        const cartItems = JSON.parse(cart);
+        const product = cartItems.find((item) => item.id === id);
+        if (product) {
+          product.quantity += 1;
+        } else {
+          const product = allItems.find((item) => item.id === id);
+          product.quantity = 1;
+          cartItems.push(product);
+          
+        }
+        AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
+          //setProducts(cartItems);
+          console.log("save");
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        AsyncStorage.setItem("cart", JSON.stringify([])).then(() => {
+          setProducts([]);
+          console.log("error", err);
+        });
+      });
   };
 
   // remove quantity for the product
   const removeQuantity = (id) => {
-    AsyncStorage.getItem("cart").then((cart) => {
-      const cartItems = JSON.parse(cart);
-      const product = cartItems.find((item) => item.id === id);
-      if (product) {
-        product.quantity -= 1;
-        if (product.quantity === 0) {
-          const index = cartItems.indexOf(product);
-          cartItems.splice(index, 1);
-        }
-      }
-      AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
-        setProducts(cartItems);
-      });
-    }).catch((err) => {
-      console.log(err);
-      AsyncStorage.setItem("cart", JSON.stringify([])).then(() => {
-        setProducts([]);
-        console.log("error", err);
-      });
-    });
 
-  }
-  
+    const tmpProds = [...products];
+    // update the quantity +/- 1
+    const index =  products.findIndex((product) => product.id === id);
+    (tmpProds[index].quantity > 0) ? tmpProds[index].quantity = tmpProds[index].quantity - 1 : tmpProds[index].quantity = 0 ;
+    setProducts(tmpProds);
+    AsyncStorage.getItem("cart")
+      .then((cart) => {
+        const cartItems = JSON.parse(cart);
+        const product = cartItems.find((item) => item.id === id);
+        if (product) {
+          if (product.quantity !== 0) {
+            product.quantity -= 1;
+          }
+        }
+        AsyncStorage.setItem("cart", JSON.stringify(cartItems)).then(() => {
+          //setProducts(cartItems);
+          console.log("save");
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        AsyncStorage.setItem("cart", JSON.stringify([])).then(() => {
+          setProducts([]);
+          console.log("error", err);
+        });
+      });
+  };
+
   return (
-    <View style={{backgroundColor:"#EFEDED"}}>
+    <SafeAreaView style={{ backgroundColor: "#EFEDED", alignContent: "center" }}>
       <Header></Header>
       {products.map((item, index) => (
         <ScrollView>
           <View style={{ borderRadius: 15 }}>
-            <Card key={index} style={{ borderColor: "black", borderRadius: 20, margin: 5 }}>
-              <Card.Title title={item.name} subtitle={item.comments} />
-              <Card.Content>
-                <Text>{item.price} €/{item.unit}</Text>
-              </Card.Content>
-              <Card.Actions style={{ display: "flex", justifyContent: "space-around", marginTop: 10 }}>
-                <Button title="+" color="#2D682B" onPress={() => addQuantity(item.id)}>Add</Button>
-                <Button title={item.quantity.toString()} color="#CABCBC">{item.quantity}</Button>
-                <Button title="-" color="#AF2222" onPress={() => removeQuantity(item.id)}>Remove</Button>
-              </Card.Actions>
+            <Card style={{ borderColor: "black", borderRadius: 20, margin: 5 }}>
+              <Card.Title>{item.name}</Card.Title>
+              <Card.Divider>
+                <View>
+                  <Text
+                    style={{
+                      color: "#CABCBC",
+                    }}
+                  >
+                    {item.comments}
+                  </Text>
+                  <Text>
+                    {item.price} €/{item.unit}
+                  </Text>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      marginTop: 15,
+                      borderRadius: 100 / 2,
+                      alignItems: "center",
+                    }}
+                  >
+                    <Button
+                      title="+"
+                      color="#2D682B"
+                      onPress={() => addQuantity(item.id)}
+                    >
+                      Add
+                    </Button>
+                    <Button title={item.quantity.toString()} color="#CABCBC">
+                      {item.quantity}
+                    </Button>
+                    <Button
+                      title="-"
+                      color="#AF2222"
+                      onPress={() => removeQuantity(item.id)}
+                    >
+                      Remove
+                    </Button>
+                  </View>
+                </View>
+              </Card.Divider>
             </Card>
           </View>
         </ScrollView>
       ))}
-    </View>
+    </SafeAreaView>
   );
+  /*
+  return (
+    <View>
+      <Header></Header>
+      {products.map((item, index) => (
+        <View key={index}>
+          <Text>{item.name}</Text>
+          <Text>{item.price}</Text>
+          <Text>{item.unit}</Text>
+          <Text>{item.price} €</Text>
+          <Text>Quantité : {item.quantity}</Text>
+          <Button
+            title="+"
+            onPress={() => addQuantity(item.id)}
+            color="green"
+          />
+          <Button
+            title="-"
+            onPress={() => removeQuantity(item.id)}
+            color="red"
+          />
+        </View>
+      ))}
+    </View>
+  );*/
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    padding: 10,
+    margin: 10,
+    borderRadius: 10,
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#000",
+  },
+});

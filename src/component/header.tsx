@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
+import Button from "../component/button";
 
 export default function Header() {
     const navigation = useNavigation();

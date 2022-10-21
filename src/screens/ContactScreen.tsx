@@ -10,8 +10,8 @@ export default function ContactScreen({navigation} : {navigation : any}){
 
     return(
     
-    <ImageBackground source={require('../../assets/image/home-background.png')} style={styles.bgImage}>
         <SafeAreaView style={{flex:1}}>
+        <ImageBackground source={require('../../assets/image/home-background.png')} style={styles.bgImage}>
         <Header />
         <View style={{flex:1}}>
         
@@ -24,27 +24,27 @@ export default function ContactScreen({navigation} : {navigation : any}){
             </View>
             <View style={{flex:4}}>
               <Text style={styles.text1}>
-                <br/>06.63.99.99.78
-                <br/>lebateaudethibault@gmail.com  
-                <br/>www.facebook.com/lebateaudethibault
+                {"\n"}06.63.99.99.78
+                {"\n"}lebateaudethibault@gmail.com  
+                {"\n"}www.facebook.com/lebateaudethibault
               </Text>
               <Text style={styles.text2}>
-                <br/>Qu'il est chaud le soleil
-                <br/>Quand nous sommes en vacances
-                <br/>Y'a d'la joie, des hirondelles
-                <br/>C'est le sud de la France
-                <br/>Papa bricole au garage
-                <br/>Maman lit dans la chaise longue
-                <br/>Dans ce joli paysage
-                <br/>Moi, je me balande en tonge
-                <br/><br/>Que du bonheur!
-                <br/>Que du bonheur!
+                {"\n"}Qu'il est chaud le soleil
+                {"\n"}Quand nous sommes en vacances
+                {"\n"}Y'a d'la joie, des hirondelles
+                {"\n"}C'est le sud de la France
+                {"\n"}Papa bricole au garage
+                {"\n"}Maman lit dans la chaise longue
+                {"\n"}Dans ce joli paysage
+                {"\n"}Moi, je me balande en tonge
+                {"\n"}Que du bonheur!
+                {"\n"}Que du bonheur!
               </Text>
             </View>   
             </ScrollView>       
         </View>
+        </ImageBackground>
         </SafeAreaView>   
-    </ImageBackground>
     )
 
     // add a background image to the home screen
