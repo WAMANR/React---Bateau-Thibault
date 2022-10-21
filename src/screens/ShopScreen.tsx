@@ -297,9 +297,10 @@ export default function Shop() {
   return (
     <SafeAreaView style={{ backgroundColor: "#EFEDED", alignContent: "center" }}>
       <Header></Header>
-      {products.map((item, index) => (
         <ScrollView>
-          <View style={{ borderRadius: 15 }}>
+      {products.map((item, index) => (
+
+          <View style={{ borderRadius: 15}}>
             <Card style={{ borderColor: "black", borderRadius: 20, margin: 5 }}>
               <Card.Title>{item.name}</Card.Title>
               <Card.Divider>
@@ -345,7 +346,7 @@ export default function Shop() {
               </Card.Divider>
             </Card>
           </View>
-        </ScrollView>
+
       ))}
     </SafeAreaView>
   );
@@ -377,6 +378,10 @@ export default function Shop() {
 }
 
 const styles = StyleSheet.create({
+  image:{
+    width : "100%",
+    height : "100%"
+  },
   container: {
     flex: 1,
     flexDirection: "row",

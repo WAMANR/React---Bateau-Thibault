@@ -38,7 +38,7 @@ export default function App() {
     console.log(e);
   }
 
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded] =  useFonts({
     'Sail': require('./assets/Fonts/Sail-Regular.ttf'),
     'Noteworthy-Lt' : require('./assets/Fonts/Noteworthy-Lt.ttf'),
     'Noteworthy-Bold' : require('./assets/Fonts/Noteworthy-Bold.ttf')

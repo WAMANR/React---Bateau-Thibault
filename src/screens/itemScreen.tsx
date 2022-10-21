@@ -57,7 +57,7 @@ export default function ItemScreen({ navigation }: { navigation: any }) {
                         {
                             itemList.map((item: any) => {
                                 return (
-                                    <View style={styles.item}>
+                                    <View style={styles.item} key={item.name.toString()}>
                                         <View style={styles.icon}>
                                             <Image style={styles.image} source={requireIcon(item.name)} />
                                         </View>
@@ -68,7 +68,9 @@ export default function ItemScreen({ navigation }: { navigation: any }) {
                         }
                     </View>
                 </View>
+
             </ScrollView>
+
         </SafeAreaView>
     )
 }
