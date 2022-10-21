@@ -33,9 +33,6 @@ export default function SinglePageScreen(){
                 </View>
 
                 <View style={style.bottomView}>
-                    <View>
-                        <Text style= {style.desc}>XXX YYY ZZZ</Text>
-                    </View>
                     <View style={{height:'100%',width:"70%",justifyContent:"center",alignItems:"center"}}>
                         <Text style={style.desc}>
                             {item.description}
