@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
+  ImageBackground,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Button from "../component/button";
@@ -295,6 +296,7 @@ export default function Shop() {
 
   return (
     <SafeAreaView style={{ backgroundColor: "#EFEDED", alignContent: "center" }}>
+      <ImageBackground source={require('../../assets/image/background.png')} resizeMode="cover" style={styles.image}>
       <Header></Header>
       {products.map((item, index) => (
         <ScrollView>
@@ -346,6 +348,7 @@ export default function Shop() {
           </View>
         </ScrollView>
       ))}
+      </ImageBackground>
     </SafeAreaView>
   );
   /*
