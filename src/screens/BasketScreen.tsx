@@ -37,81 +37,78 @@ export default function Basket() {
 
   return (
     <SafeAreaView>
-      <ImageBackground source={require('../../assets/image/background.png')} style={styles.bgImage}>
-        <Header></Header>
+      <Header></Header>
+      <Card>
+        <Card.Title>Votre panier</Card.Title>
 
-        <Card>
-          <Card.Title> Title</Card.Title>
-
-          {
-            // only display if the basket item quantity is greater than 0
-            basket.map((item: any) => {
-              if (item.quantity > 0) {
-                return (
-                  <Card.Divider>
-                    <View>
-                      <Text style={{ marginBottom: 10 }}>
-                        {item.quantity} {item.unit}
-                      </Text>
-                      <Text>{item.comments}</Text>
-                      <Text style={{ marginBottom: 10 }}>
-                        {item.price * item.quantity} €
-                      </Text>
-                    </View>
-                  </Card.Divider>
-                );
-              }
-            })
-          }
-        </Card>
-        <Card>
-          <Card.Title>Total price : </Card.Title>
-          <Card.Divider>
-            <View>
-              <Text style={{ marginBottom: 10 }}>
-                Total price :{" "}
-                {
-                  // calculate the total price of the basket
-                  basket.reduce((acc: any, item: any) => {
-                    return acc + item.price * item.quantity;
-                  }, 0)
-                }{" "}
-                €
-              </Text>
-            </View>
-          </Card.Divider>
-        </Card>
-
-        <Card>
-          <Card.Title>
-            Please chose a restaurant to deliver your order :
-          </Card.Title>
+        {
+          // only display if the basket item quantity is greater than 0
+          basket.map((item: any) => {
+            if (item.quantity > 0) {
+              return (
+                <Card.Divider>
+                  <View>
+                    <Text style={{ marginBottom: 10 }}>
+                      {item.quantity} {item.unit}
+                    </Text>
+                    <Text>{item.comments}</Text>
+                    <Text style={{ marginBottom: 10 }}>
+                      {item.price * item.quantity} €
+                    </Text>
+                  </View>
+                </Card.Divider>
+              );
+            }
+          })
+        }
+      </Card>
+      <Card>
+        <Card.Title>Prix total : </Card.Title>
+        <Card.Divider>
           <View>
-            <SelectDropdown
-              data={restaurants}
-              onSelect={(selectedItem, index) => {
-                console.log(selectedItem, index);
-              }}
-              buttonTextAfterSelection={(selectedItem, index) => {
-                ToastAndroid.showWithGravity(
-                  "Submitted : " + selectedItem,
-                  ToastAndroid.SHORT,
-                  ToastAndroid.CENTER
-                );
-
-                // text represented after item is selected
-                // if data array is an array of objects then return selectedItem.property to render after item is selected
-                return selectedItem;
-              }}
-              rowTextForSelection={(item, index) => {
-                // text represented for each item in dropdown
-                // if data array is an array of objects then return item.property to represent item in dropdown
-                return item;
-              }}
-            />
+            <Text style={{ marginBottom: 10 }}>
+              Prix total :{" "}
+              {
+                // calculate the total price of the basket
+                basket.reduce((acc: any, item: any) => {
+                  return acc + item.price * item.quantity;
+                }, 0)
+              }{" "}
+              €
+            </Text>
           </View>
-        </Card>
-      </ImageBackground>
+        </Card.Divider>
+      </Card>
+
+      <Card>
+        <Card.Title>
+          Veuillez choisir un restaurant dans lequel livrer votre commande :
+        </Card.Title>
+        <View>
+          <SelectDropdown
+            data={restaurants}
+            onSelect={(selectedItem, index) => {
+              console.log(selectedItem, index);
+            }}
+            buttonTextAfterSelection={(selectedItem, index) => {
+              ToastAndroid.showWithGravity(
+                "Commande envoyée : " + selectedItem,
+                ToastAndroid.SHORT,
+                ToastAndroid.CENTER
+              );
+
+              // text represented after item is selected
+              // if data array is an array of objects then return selectedItem.property to render after item is selected
+              return selectedItem;
+            }}
+            rowTextForSelection={(item, index) => {
+              // text represented for each item in dropdown
+              // if data array is an array of objects then return item.property to represent item in dropdown
+              return item;
+            }}
+          />
+        </View>
+      </Card>
     </SafeAreaView>
   );
 }
@@ -122,5 +119,5 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     padding: 20,
-  },
+  }
 });

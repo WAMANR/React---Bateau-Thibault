@@ -1,46 +1,44 @@
-import { Text, View, ImageBackground, StyleSheet,Image, SafeAreaView} from "react-native";
+import { Text, View, ImageBackground, StyleSheet, Image, SafeAreaView } from "react-native";
 import Button from "../component/button";
 import Header from '../component/header';
-import {FontAwesome} from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { useFonts } from "expo-font";
-import {useNavigation, useRoute} from "@react-navigation/native";
-import {requireImage} from "../functions/requireImage";
- 
-export default function SinglePageScreen(){
-    const route=useRoute();
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { requireImage } from "../functions/requireImage";
+
+export default function SinglePageScreen() {
+    const route = useRoute();
     const navigation = useNavigation();
 
-    const goToNextScreen = (url:string) =>{
+    const goToNextScreen = (url: string) => {
         navigation.navigate(url)
     }
 
-    let description : string = "desc";
-    let titre : string = "titre de la page"
-    let imgsrc : string = '../../assets/bateau-icon/aquilon_icon.png'
+    let description: string = "desc";
+    let titre: string = "titre de la page"
+    let imgsrc: string = '../../assets/bateau-icon/aquilon_icon.png'
 
-    var item  = route.params;
+    var item = route.params;
 
-    return(
-         <SafeAreaView style={style.container}>
-         <ImageBackground source={require('../../assets/image/background.png')} resizeMode="cover" style={style.backgroundImage}>
-         <Header/>
+    return (
+        <SafeAreaView style={style.container}>
+            <Header />
             {/* <Header/> */}
-                <View style={style.topView}>
-                    <Text style={style.title}>{item.completeName}</Text>
-                    <Image style={style.image} source={requireImage(item.name)} />
-                </View>
+            <View style={style.topView}>
+                <Text style={style.title}>{item.completeName}</Text>
+                <Image style={style.image} source={requireImage(item.name)} />
+            </View>
 
-                <View style={style.bottomView}>
-                    <View style={{height:'100%',width:"70%",justifyContent:"center",alignItems:"center"}}>
-                        <Text style={style.desc}>
-                            {item.description}
-                        </Text>
-                    </View>
+            <View style={style.bottomView}>
+                <View style={{ height: '100%', width: "70%", justifyContent: "center", alignItems: "center" }}>
+                    <Text style={style.desc}>
+                        {item.description}
+                    </Text>
                 </View>
-                </ImageBackground>
-            </SafeAreaView>
+            </View>
+        </SafeAreaView>
 
     )
 
@@ -49,46 +47,46 @@ export default function SinglePageScreen(){
 
 }
 
-const style= StyleSheet.create({
-    container:{
-        flex:1,
+const style = StyleSheet.create({
+    container: {
+        flex: 1,
         flexDirection: 'column',
-        alignItems:'center',
+        alignItems: 'center',
     },
 
-    title:{
-        fontFamily: 'Sail', fontSize:30,color:"white"
+    title: {
+        fontFamily: 'Sail', fontSize: 30, color: "white"
     },
 
-    image:{
-        height:'80%',
+    image: {
+        height: '80%',
         width: '100%'
     },
 
-    topView : {
-        flex:2,
-        alignItems:"center",
-        width:"100%",
-        height:"auto",
-        justifyContent:'space-around'
+    topView: {
+        flex: 2,
+        alignItems: "center",
+        width: "100%",
+        height: "auto",
+        justifyContent: 'space-around'
     },
 
     bottomView: {
-        flex:2,
-        alignItems:"center",
-        justifyContent:"center",
-        paddingTop:15
+        flex: 2,
+        alignItems: "center",
+        justifyContent: "center",
+        paddingTop: 15
     },
 
-    backgroundImage:{
-        width : "100%",
-        height : "100%"
+    backgroundImage: {
+        width: "100%",
+        height: "100%"
     },
 
-    desc:{
-        textAlign:"center",
-        margin:20,
-        fontFamily:"Noteworthy-Bold"
+    desc: {
+        textAlign: "center",
+        margin: 20,
+        fontFamily: "Noteworthy-Bold"
     }
 })
 
