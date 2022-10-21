@@ -348,6 +348,7 @@ export default function Shop() {
           </View>
 
       ))}
+      </ScrollView>
     </SafeAreaView>
   );
   /*
